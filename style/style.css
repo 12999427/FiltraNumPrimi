@@ -1,0 +1,25 @@
+li.selettorees {
+    border: 1px solid rgb(27, 27, 99);
+    background-color: rgb(27, 27, 99);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px black;
+}
+
+ol.selettorees {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+a.selettorees {
+    color: white;
+    transition: color 0.3s;
+}
+
+a.selettorees:hover {
+color: rgba(156, 206, 202, 0.582);
+}
+
+input.campoinput {
+    margin-bottom: 10px;
+}
