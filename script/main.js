@@ -1,4 +1,4 @@
-const { performance } = require('perf_hooks');
+//const { performance } = require('perf_hooks'); //bah volevo misurare il tempo che ci mettevo
 
 function add () {
     let elemento = document.createElement("input");
@@ -58,15 +58,19 @@ function trova () {
     if (isNaN(max) || max<=1) {
         return;
     } 
-    let p = document.getElementById("outputmaxn");
-    const startTime = performance.now()
+    let p = document.getElementById("outputmaxn"); //no scherzo nnon così perchè aggiornare il DOM ci mette un'eternità quindi lo si deve fare una volta alla fine
+    //const startTime = performance.now()
+
+    let out = []
 
     for (let i = 2; i<=max; i++) {
         if (numPrimo(i)) {
-            p.innerText += i.toString() + "\n";
+            out.push(i);
         }
     }
 
-    const endTime = performance.now()
-    console.log(`L'eseguzione ci ha messo ${endTime - startTime} millisecondi`)
+    document.getElementById("outputmaxn").innerText = out;
+
+    //const endTime = performance.now()
+    //console.log(`L'eseguzione ci ha messo ${endTime - startTime} millisecondi`)
 }
