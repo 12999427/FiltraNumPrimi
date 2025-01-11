@@ -1,3 +1,5 @@
+const { performance } = require('perf_hooks');
+
 function add () {
     let elemento = document.createElement("input");
     elemento.type = "number";
@@ -34,7 +36,7 @@ function compute () {
 function filtraNumPrimi (a) {
     let res = [];
     a.forEach(e => {
-        if (numPrimo(e) && e>1){
+        if (numPrimo(e)){
             res.push(e);
         }
     });
@@ -42,10 +44,29 @@ function filtraNumPrimi (a) {
 }
 
 function numPrimo (n) {
+    if (n<=1) { return false; }
     for (let i = 2; i<=Math.sqrt(n); i++){
-        if (n%i == 0 || n == 1) {
+        if (n%i == 0) {
             return false;
         }
     }
     return true;
+}
+
+function trova () {
+    let max = parseInt(document.getElementById("maxn").value);
+    if (isNaN(max) || max<=1) {
+        return;
+    } 
+    let p = document.getElementById("outputmaxn");
+    const startTime = performance.now()
+
+    for (let i = 2; i<=max; i++) {
+        if (numPrimo(i)) {
+            p.innerText += i.toString() + "\n";
+        }
+    }
+
+    const endTime = performance.now()
+    console.log(`L'eseguzione ci ha messo ${endTime - startTime} millisecondi`)
 }
